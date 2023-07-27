@@ -48,6 +48,9 @@ function App() {
 
     function resetQuestions() {
         setQuestions()
+        setSelectedCategory()
+        setSelectedDifficulty()
+        setSelectedNumber({ value: 5, label: '5' })
     }
 
     return (
