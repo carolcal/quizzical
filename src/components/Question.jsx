@@ -14,6 +14,7 @@ export default function Questions({ question, check, verifyAnswers }) {
         } else {
             verifyAnswers(question.id, false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [answers])
 
     const multipleChoice = answers.map((answer, index) => {
