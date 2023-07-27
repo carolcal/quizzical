@@ -1,0 +1,155 @@
+:root {
+    --font-family-primary: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --primary-color: #404565;
+    --secondary-color: #F78B7B;
+    --correct-color: #268986c2;
+    --wrong-color: #c46b895d;
+}
+
+body,
+html {
+    margin: 0;
+    font-family: var(--font-family-primary);
+    background-color: #f1f1f1;
+}
+
+h1 {
+    margin: 0px
+}
+
+h5 {
+    margin: 10px;
+}
+
+p {
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+.initial-page {
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.question-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 150%;
+}
+
+.question-elements {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.question-unit {
+    padding: 10px;
+    color: var(--primary-color);
+    padding: 30px;
+    background-color: white;
+    width: 440px;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.question-unit-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.question-unit-options button {
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.inline-form {
+    display: flex;
+    gap: 10px;
+}
+
+.form-select {
+    padding: 0px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    width: 245px;
+    text-align: left;
+}
+
+.form-select-multi {
+    padding: 0px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    width: 500px;
+    text-align: left;
+}
+
+.pill {
+    background-color: var(--secondary-color);
+    font-size: 0.7em;
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+
+/* Buttons */
+
+button {
+    font-family: var(--font-family-primary);
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 0.8em;
+}
+
+.btn-main {
+    padding: 15px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 1em;
+    width: 500px;
+}
+
+.btn-normal {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-selected {
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-null {
+    border: none;
+    color: var(--primary-color);
+}
+
+.btn-correct {
+    border: none;
+    background-color: var(--correct-color);
+    color: white;
+}
+
+.btn-incorrect {
+    border: none;
+    background-color: var(--wrong-color);
+    color: var(--primary-color);
+}

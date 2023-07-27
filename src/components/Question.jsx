@@ -1,51 +1,51 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function Questions(props) {
+export default function Questions({ question, check, verifyAnswers }) {
 
-    const [choices, setChoices] = useState(props.question.choices)
+    const [answers, setAnswers] = useState(question.answers)
 
-    useEffect(()=>{
-        const verifyAnswer = choices.filter(choice => {
-            let correctAnswer = (choice.selected && choice.correctAnswer) === true
+    useEffect(() => {
+        const verifyAnswer = answers.filter(answer => {
+            let correctAnswer = (answer.isChosen && answer.isCorrect) === true
             return correctAnswer
         })
-        if(verifyAnswer.length){
-            props.verifyAnswers(props.question.id, true)
+        if (verifyAnswer.length) {
+            verifyAnswers(question.id, true)
         } else {
-            props.verifyAnswers(props.question.id, false)
+            verifyAnswers(question.id, false)
         }
-    }, [choices])
+    }, [answers])
 
-    const multipleChoice = choices.map((choice, index) => {
+    const multipleChoice = answers.map((answer, index) => {
         function chooseAnswer(option) {
-            setChoices(oldChoice => oldChoice.map(choice => {
-                return choice.option === option ?
-                {...choice, selected: !choice.selected} :
-                {...choice, selected: false}
+            setAnswers(oldChoice => oldChoice.map(answer => {
+                return answer.text === option ?
+                    { ...answer, isChosen: !answer.isChosen } :
+                    { ...answer, isChosen: false }
             }))
         }
         return (
             <div key={index}>
                 <button
-                    className={choice.selected ? 'btn-selected' : 'btn-normal'}
-                    onClick={() => chooseAnswer(choice.option)}
+                    className={answer.isChosen ? 'btn-selected' : 'btn-normal'}
+                    onClick={() => chooseAnswer(answer.text)}
                 >
-                    {choice.option}
+                    {answer.text}
                 </button>
             </div>
         )
     })
 
-    const multipleChoiceAnswers = choices.map((option, index) => {
+    const multipleChoiceAnswers = answers.map((answer, index) => {
         return (
             <div key={index}>
                 <button className={
-                    option.correctAnswer ?
+                    answer.isCorrect ?
                         'btn-correct' :
-                        option.selected && !option.correctAnswer ?
+                        answer.isChosen && !answer.isCorrect ?
                             'btn-incorrect' :
                             'btn-null'}>
-                    {option.option}
+                    {answer.text}
                 </button>
             </div>
         )
@@ -53,11 +53,15 @@ export default function Questions(props) {
 
     return (
         <div className='question-unit'>
-            <h3>{props.question.question}</h3>
+            <p className='pill'>
+                Category: {question.category}
+                <strong> | </strong>
+                Difficulty: {question.difficulty}
+            </p>
+            <h5>{question.question}</h5>
             <div className='question-unit-options'>
-                {props.check ? multipleChoiceAnswers : multipleChoice}
+                {check ? multipleChoiceAnswers : multipleChoice}
             </div>
-            <hr />
         </div>
     )
 }

@@ -2,41 +2,46 @@ import React, { useState } from 'react';
 import Initial from './components/Initial.jsx';
 import Questions from './components/Questions.jsx'
 import { nanoid } from 'nanoid';
-import './App.css';
+
 
 function App() {
 
     const [questions, setQuestions] = useState()
+    const [selectedCategory, setSelectedCategory] = useState()
+    const [selectedDifficulty, setSelectedDifficulty] = useState()
+    const [selectedNumber, setSelectedNumber] = useState({ value: 5, label: '5' })
 
     async function getQuestions() {
-        var he = require('he');
+        let he = require('he');
         let quizResponse = []
-        await fetch('https://opentdb.com/api.php?amount=5')
+        const amount = `amount=${selectedNumber.value}`
+        const category = selectedCategory ? `&category=${selectedCategory.value}` : ''
+        const difficulty = selectedDifficulty ? `&difficulty=${selectedDifficulty.value}` : ''
+        const url = `https://opentdb.com/api.php?${amount}${category}${difficulty}`
+        await fetch(url)
             .then(response => response.json())
             .then(data => {
-                quizResponse = data.results
-                for (const response of quizResponse) {
-                    let options = [{
-                        option: he.decode(response.correct_answer),
-                        selected: false,
-                        correctAnswer: true,
-                    }]
-                    for (const value of response.incorrect_answers) {
-                        options.push({
-                            option: he.decode(value),
-                            selected: false,
-                            correctAnswer: false
-                        })
+                quizResponse = data.results.map(element => {
+                    return {
+                        id: nanoid(),
+                        question: he.decode(element.question),
+                        category: element.category,
+                        difficulty: element.difficulty,
+                        answers: [
+                            ...element.incorrect_answers.map(answer => ({
+                                text: he.decode(answer),
+                                isCorrect: false,
+                                isChosen: false,
+
+                            })),
+                            {
+                                text: he.decode(element.correct_answer),
+                                isCorrect: true,
+                                isChosen: false,
+                            },
+                        ].sort(() => 0.5 - Math.random())
                     }
-                    response.choices = options.sort(generateRandomOrder)
-                    function generateRandomOrder(a, b) {
-                        return 0.5 - Math.random();
-                    }
-                    response.id = nanoid()
-                    delete response.incorrect_answers
-                    delete response.correct_answer
-                    response.question = he.decode(response.question)
-                }
+                })
             })
         setQuestions(quizResponse)
     }
@@ -47,7 +52,15 @@ function App() {
 
     return (
         <main>
-            {!questions && <Initial getQuestions={getQuestions} />}
+            {!questions &&
+                <Initial
+                    getQuestions={getQuestions}
+                    setSelectedCategory={setSelectedCategory}
+                    setSelectedDifficulty={setSelectedDifficulty}
+                    setSelectedNumber={setSelectedNumber}
+                    selectedNumber={selectedNumber}
+                />
+            }
             {questions && <Questions
                 questions={questions}
                 resetQuestions={resetQuestions}
