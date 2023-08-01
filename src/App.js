@@ -68,6 +68,7 @@ function App() {
                 questions={questions}
                 resetQuestions={resetQuestions}
                 setQuestions={setQuestions}
+                amount={selectedNumber.value}
             />}
         </main>
     );

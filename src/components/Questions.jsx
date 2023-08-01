@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Question from './Question'
 import Confetti from 'react-confetti'
 
@@ -7,6 +7,19 @@ export default function Questions(props) {
     const [check, setCheck] = useState(false)
 
     const [count, setCount] = useState()
+
+    const refContainer = useRef()
+
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        if (refContainer.current) {
+            setDimensions({
+                width: refContainer.current.offsetWidth,
+                height: refContainer.current.offsetHeight,
+            });
+        }
+    }, []);
 
     function countPoints() {
         setCheck(prev => !prev)
@@ -40,16 +53,16 @@ export default function Questions(props) {
     })
 
     return (
-        <div className='question-page'>
+        <div className='question-page' ref={refContainer}>
             <div className='question-elements'>
                 {questionElement}
             </div>
             {check ?
                 <div>
-                    {count === 5 && <Confetti numberOfPieces={800}/>}
-                    {count === 0 && <h4>You scored {count}/5 correct answers. Hope you go better the next time.</h4>}
-                    {(count > 0 && count < 5) && <h4>You scored {count}/5 correct answers. Keep Practicing!</h4>}
-                    {count === 5 && <h4>Congratulations! You got everything rigth!</h4>}
+                    {count === props.amount && <Confetti numberOfPieces={800} width={dimensions.width} height={dimensions.height} />}
+                    {count === 0 && <h4>You didn't scored anything :( Hope you go better the next time.</h4>}
+                    {(count > 0 && count < props.amount) && <h4>You scored {count}/{props.amount} correct answers. Keep Practicing!</h4>}
+                    {count === props.amount && <h4>Congratulations! You got everything rigth!</h4>}
                     <button className='btn-main' onClick={() => props.resetQuestions()}>New Game</button>
                 </div>
                 :
