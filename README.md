@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Quizzical App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This project is a quiz created using the Trivia Open API. Users can filter quiz questions based on their preferred category, difficulty level, and the number of questions they desire. To achieve this, the app imports all available categories from the Trivia API when the page is initially loaded.
+
+After completing the quiz, users can view their score. Additionally, whenever a user answers all questions correctly, confetti appears to celebrate their success.
+
+This is a frontend project and served as the final challenge of a React course I completed. One of the most challenging aspects of this project was organizing the data received from the API for use in the app. However, the most demanding part was the functionality that checked the answers and counted the correct ones. I had to use two different states, each with its respective function for state changes. I also had to pass one of the states and one of the functions as props from the parent component to the child component and receive answers from the child component to the parent. For someone who had just learned React, it was a rewarding experience.
+
+Initially, the challenge was to render 5 random questions. However, after completing the specified requirements, I decided to incorporate a couple of additional features. The first was the addition of category, difficulty level, and the number of questions filters, providing the user's personalized experience. The second feature was the confetti that appears when the user answers all questions correctly, adding a fun element to make the experience more exciting.
+
+You can access this project online at: https://master--bespoke-klepon-d70f16.netlify.app/
+
+
+## How to use in localhost
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). After downloading it you can run locally in you machine running in your terminal:
+
+### `npm install`
+Install all the dependencies
 
 ### `npm start`
-
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

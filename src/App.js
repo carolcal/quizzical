@@ -21,6 +21,7 @@ function App() {
         await fetch(url)
             .then(response => response.json())
             .then(data => {
+                console.log(data.results)
                 quizResponse = data.results.map(element => {
                     return {
                         id: nanoid(),
