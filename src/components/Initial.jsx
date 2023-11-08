@@ -41,6 +41,7 @@ export default function Initial(props) {
             <p>Filter the level of difficulty. </p>
             <p>Determine the number of questions.</p>
             <h4>But mostly... Have Fun!</h4>
+            <div className='form'>
             {optionsCategories.length &&
                 <Select
                     options={optionsCategories}
@@ -66,6 +67,7 @@ export default function Initial(props) {
 
             </div>
             <button className='btn-main' onClick={() => props.getQuestions()}>START QUIZ!</button>
+            </div>
         </div>
     )
 }

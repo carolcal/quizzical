@@ -152,3 +152,19 @@ button {
     background-color: var(--wrong-color);
     color: var(--primary-color);
 }
+
+@media (max-width: 500px){
+
+    .form{
+        width: 90%;
+    }
+
+    .form-select{
+        width: 50%;
+    }
+
+    .form-select-multi, .question-unit, .btn-main{
+        width: 100%;
+        margin: 10px 0;
+    }
+}
