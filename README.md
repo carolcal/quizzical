@@ -11,7 +11,7 @@ This is a frontend project and served as the final challenge of a React course I
 
 Initially, the challenge was to render 5 random questions. However, after completing the specified requirements, I decided to incorporate a couple of additional features. The first was the addition of category, difficulty level, and the number of questions filters, providing the user's personalized experience. The second feature was the confetti that appears when the user answers all questions correctly, adding a fun element to make the experience more exciting.
 
-You can access this project online at: https://master--bespoke-klepon-d70f16.netlify.app/
+You can access this project online at: https://master--quizzical-carol.netlify.app/
 
 
 ## How to use in localhost
